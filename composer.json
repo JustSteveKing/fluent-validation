@@ -1,0 +1,53 @@
+{
+    "name": "juststeveking/fluent-validation",
+    "type": "package",
+    "description": "Fluent Validation is a helper package, that allows you to use sensible defaults for your Laravel validation rules.`",
+    "license": "MIT",
+    "require": {
+        "php": "^8.1"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.2",
+        "orchestra/testbench": "^7.11",
+        "pestphp/pest": "^1.22",
+        "phpstan/phpstan": "^1.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "JustSteveKing\\FluentValidation\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "JustSteveKing\\FluentValidation\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "pint": [
+            "./vendor/bin/pint"
+        ],
+        "stan": [
+            "./vendor/bin/phpstan analyse"
+        ],
+        "test": [
+            "./vendor/bin/pest"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "JustSteveKing\\FluentValidation\\Providers\\PackageServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
