@@ -1,5 +1,9 @@
 # Fluent Validation
 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/juststeveking/fluent-validation.svg?style=flat-square)](https://packagist.org/packages/juststeveking/fluent-validation)
+[![Test Suite](https://github.com/juststeveking/fluent-validation/actions/workflows/tests.yml/badge.svg)](https://github.com/juststeveking/fluent-validation/actions/workflows/tests.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/juststeveking/fluent-validation.svg?style=flat-square)](https://packagist.org/packages/juststeveking/fluent-validation)
+
 Fluent Validation is a helper package, that allows you to use sensible defaults for your Laravel validation rules.
 
 ## Installation
@@ -35,6 +39,46 @@ return [
 ];
 ```
 
+### Validating Passwords
+
+```php
+return [
+    'password' => \JustSteveKing\FluentValidation\Fluency\PasswordRule::rules()
+];
+```
+
+Or to build them up yourself and/or override them:
+
+```php
+return [
+    'password' => [
+        \JustSteveKing\FluentValidation\Rules\Required::rule(),
+        \Illuminate\Validation\Rules\Password::default(),
+    ]
+];
+```
+
+### Validating Strings
+
+```php
+return [
+    'title' => \JustSteveKing\FluentValidation\Fluency\StringRule::rules()
+];
+```
+
+Or to build them up yourself and/or override them:
+
+```php
+return [
+    'title' => [
+        \JustSteveKing\FluentValidation\Rules\Required::rule(),
+        \JustSteveKing\FluentValidation\Rules\Text::rule(),
+        \JustSteveKing\FluentValidation\Rules\Min::rule(2),
+        \JustSteveKing\FluentValidation\Rules\Max::rule(255),
+    ]
+];
+```
+
 ## Available Fluency Rules
 
 This is a list of the currently available Fluency Rules:
@@ -51,3 +95,27 @@ This is a list of the currently available Rules:
 - `Max` - Will return `max:` and whatever override input you pass.
 - `Min` - Will return `min:` and whatever override input you pass.
 - `Required` - Will return `required` or whatever override input you pass.
+- `Text` - Will return `string` or whatever override input you pass.
+
+## Testing
+
+```bash
+composer test
+```
+
+## Changelog
+
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+
+## Security Vulnerabilities
+
+Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+
+## Credits
+
+- [Steve McDougall](https://github.com/juststeveking)
+- [All Contributors](../../contributors)
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

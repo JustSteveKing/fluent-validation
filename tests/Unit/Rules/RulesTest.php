@@ -6,6 +6,7 @@ use JustSteveKing\FluentValidation\Rules\Email;
 use JustSteveKing\FluentValidation\Rules\Max;
 use JustSteveKing\FluentValidation\Rules\Min;
 use JustSteveKing\FluentValidation\Rules\Required;
+use JustSteveKing\FluentValidation\Rules\Text;
 
 it('can get the basic email rule', function (): void {
     expect(
@@ -54,3 +55,15 @@ it('can override the required rule', function (string $rule): void {
         Required::rule($rule),
     )->toEqual($rule);
 })->with('required');
+
+it('can get the basic text rule', function (): void {
+    expect(
+        Text::rule(),
+    )->toEqual('string');
+});
+
+it('can override the text rule', function (string $rule): void {
+    expect(
+        Text::rule($rule),
+    )->toEqual($rule);
+})->with('text');
