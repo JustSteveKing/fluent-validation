@@ -6,6 +6,7 @@ use JustSteveKing\FluentValidation\Rules\Accepted;
 use JustSteveKing\FluentValidation\Rules\After;
 use JustSteveKing\FluentValidation\Rules\AfterOrEqual;
 use JustSteveKing\FluentValidation\Rules\Boolean;
+use JustSteveKing\FluentValidation\Rules\Date;
 use JustSteveKing\FluentValidation\Rules\Email;
 use JustSteveKing\FluentValidation\Rules\Enum;
 use JustSteveKing\FluentValidation\Rules\Max;
@@ -116,14 +117,26 @@ it('can get the basic enum rule', function (): void {
     )->toBeInstanceOf(\Illuminate\Validation\Rules\Enum::class);
 });
 
+it('can get the basic boolean rule', function (): void {
+    expect(
+        Boolean::rule(),
+    )->toEqual('boolean');
+});
+
 it('can override the boolean rule', function (string $rule): void {
     expect(
         Boolean::rule($rule),
     )->toEqual($rule);
 })->with('random');
 
-it('can get the basic boolean rule', function (): void {
+it('can get the basic date rule', function (): void {
     expect(
-        Boolean::rule(),
-    )->toEqual('boolean');
+        Date::rule(),
+    )->toEqual('date');
 });
+
+it('can override the date rule', function (string $rule): void {
+    expect(
+        Date::rule($rule),
+    )->toEqual($rule);
+})->with('random');
