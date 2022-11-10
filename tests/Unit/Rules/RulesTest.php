@@ -9,6 +9,7 @@ use JustSteveKing\FluentValidation\Rules\Boolean;
 use JustSteveKing\FluentValidation\Rules\Date;
 use JustSteveKing\FluentValidation\Rules\Email;
 use JustSteveKing\FluentValidation\Rules\Enum;
+use JustSteveKing\FluentValidation\Rules\Exists;
 use JustSteveKing\FluentValidation\Rules\Max;
 use JustSteveKing\FluentValidation\Rules\Min;
 use JustSteveKing\FluentValidation\Rules\Required;
@@ -140,3 +141,20 @@ it('can override the date rule', function (string $rule): void {
         Date::rule($rule),
     )->toEqual($rule);
 })->with('random');
+
+it('can get the basic exists rule with just the table', function (): void {
+    expect(
+        Exists::rule(
+            table: 'test',
+        ),
+    )->toEqual('exists:test');
+});
+
+it('can get the basic exists rule with the table and column', function (): void {
+    expect(
+        Exists::rule(
+            table: 'test',
+            column: 'id',
+        ),
+    )->toEqual('exists:test,id');
+});
