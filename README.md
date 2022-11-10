@@ -96,6 +96,7 @@ This is a list of the currently available Rules:
 - `AfterOrEqual` - Will return `after_or_equal:` and whatever override input you pass.
 - `Alpha` - Will return `alpha` or whatever override input you pass.
 - `Email` - Will return `email:` and whatever override input you pass.
+- `Enum` - Will return a new Laravel Enum validation rule, you _must_ pass a backed Enum to this instance using `YourEnum::class`.
 - `Max` - Will return `max:` and whatever override input you pass.
 - `Min` - Will return `min:` and whatever override input you pass.
 - `Required` - Will return `required` or whatever override input you pass.

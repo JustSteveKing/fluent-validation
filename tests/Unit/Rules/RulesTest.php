@@ -6,10 +6,12 @@ use JustSteveKing\FluentValidation\Rules\Accepted;
 use JustSteveKing\FluentValidation\Rules\After;
 use JustSteveKing\FluentValidation\Rules\AfterOrEqual;
 use JustSteveKing\FluentValidation\Rules\Email;
+use JustSteveKing\FluentValidation\Rules\Enum;
 use JustSteveKing\FluentValidation\Rules\Max;
 use JustSteveKing\FluentValidation\Rules\Min;
 use JustSteveKing\FluentValidation\Rules\Required;
 use JustSteveKing\FluentValidation\Rules\Text;
+use JustSteveKing\FluentValidation\Tests\Fixtures\Method;
 
 it('can get the basic email rule', function (): void {
     expect(
@@ -106,3 +108,9 @@ it('can override the after or equal rule', function (string $rule): void {
         AfterOrEqual::rule($rule),
     )->toEqual("after_or_equal:$rule");
 })->with('random');
+
+it('can get the basic enum rule', function (): void {
+    expect(
+        Enum::rule(Method::class),
+    )->toBeInstanceOf(\Illuminate\Validation\Rules\Enum::class);
+});
