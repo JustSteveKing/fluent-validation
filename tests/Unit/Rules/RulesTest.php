@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+use JustSteveKing\FluentValidation\Rules\Accepted;
+use JustSteveKing\FluentValidation\Rules\After;
+use JustSteveKing\FluentValidation\Rules\AfterOrEqual;
 use JustSteveKing\FluentValidation\Rules\Email;
 use JustSteveKing\FluentValidation\Rules\Max;
 use JustSteveKing\FluentValidation\Rules\Min;
@@ -67,3 +70,39 @@ it('can override the text rule', function (string $rule): void {
         Text::rule($rule),
     )->toEqual($rule);
 })->with('text');
+
+it('can get the basic accepted rule', function (): void {
+    expect(
+        Accepted::rule(),
+    )->toEqual('accepted');
+});
+
+it('can override the accepted rule', function (string $rule): void {
+    expect(
+        Text::rule($rule),
+    )->toEqual($rule);
+})->with('random');
+
+it('can get the basic after rule', function (): void {
+    expect(
+        After::rule(),
+    )->toEqual('after:');
+});
+
+it('can override the after rule', function (string $rule): void {
+    expect(
+        After::rule($rule),
+    )->toEqual("after:$rule");
+})->with('random');
+
+it('can get the basic after or equal rule', function (): void {
+    expect(
+        AfterOrEqual::rule(),
+    )->toEqual('after_or_equal:');
+});
+
+it('can override the after or equal rule', function (string $rule): void {
+    expect(
+        AfterOrEqual::rule($rule),
+    )->toEqual("after_or_equal:$rule");
+})->with('random');

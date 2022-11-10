@@ -91,6 +91,10 @@ This is a list of the currently available Fluency Rules:
 
 This is a list of the currently available Rules:
 
+- `Accepted` - Will return `accepted` or whatever override input you pass.
+- `After` - Will return `after:` and whatever override input you pass.
+- `AfterOrEqual` - Will return `after_or_equal:` and whatever override input you pass.
+- `Alpha` - Will return `alpha` or whatever override input you pass.
 - `Email` - Will return `email:` and whatever override input you pass.
 - `Max` - Will return `max:` and whatever override input you pass.
 - `Min` - Will return `min:` and whatever override input you pass.
