@@ -5,6 +5,7 @@ declare(strict_types=1);
 use JustSteveKing\FluentValidation\Rules\Accepted;
 use JustSteveKing\FluentValidation\Rules\After;
 use JustSteveKing\FluentValidation\Rules\AfterOrEqual;
+use JustSteveKing\FluentValidation\Rules\Boolean;
 use JustSteveKing\FluentValidation\Rules\Email;
 use JustSteveKing\FluentValidation\Rules\Enum;
 use JustSteveKing\FluentValidation\Rules\Max;
@@ -94,7 +95,7 @@ it('can get the basic after rule', function (): void {
 it('can override the after rule', function (string $rule): void {
     expect(
         After::rule($rule),
-    )->toEqual("after:$rule");
+    )->toEqual("after:{$rule}");
 })->with('random');
 
 it('can get the basic after or equal rule', function (): void {
@@ -106,11 +107,23 @@ it('can get the basic after or equal rule', function (): void {
 it('can override the after or equal rule', function (string $rule): void {
     expect(
         AfterOrEqual::rule($rule),
-    )->toEqual("after_or_equal:$rule");
+    )->toEqual("after_or_equal:{$rule}");
 })->with('random');
 
 it('can get the basic enum rule', function (): void {
     expect(
         Enum::rule(Method::class),
     )->toBeInstanceOf(\Illuminate\Validation\Rules\Enum::class);
+});
+
+it('can override the boolean rule', function (string $rule): void {
+    expect(
+        Boolean::rule($rule),
+    )->toEqual($rule);
+})->with('random');
+
+it('can get the basic boolean rule', function (): void {
+    expect(
+        Boolean::rule(),
+    )->toEqual('boolean');
 });
