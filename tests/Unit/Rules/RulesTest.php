@@ -10,6 +10,7 @@ use JustSteveKing\FluentValidation\Rules\Date;
 use JustSteveKing\FluentValidation\Rules\Email;
 use JustSteveKing\FluentValidation\Rules\Enum;
 use JustSteveKing\FluentValidation\Rules\Exists;
+use JustSteveKing\FluentValidation\Rules\Integer;
 use JustSteveKing\FluentValidation\Rules\Max;
 use JustSteveKing\FluentValidation\Rules\Min;
 use JustSteveKing\FluentValidation\Rules\Required;
@@ -157,4 +158,10 @@ it('can get the basic exists rule with the table and column', function (): void 
             column: 'id',
         ),
     )->toEqual('exists:test,id');
+});
+
+it('can get the basic integer rule', function (): void {
+    expect(
+        Integer::rule(),
+    )->toEqual('integer');
 });

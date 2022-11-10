@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace JustSteveKing\FluentValidation\Rules;
 
-final class Exists
+use JustSteveKing\FluentValidation\Contracts\ExistsContract;
+
+final class Exists implements ExistsContract
 {
     public static function rule(string $table, null|string $column = null): string
     {
